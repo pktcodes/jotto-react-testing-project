@@ -7,7 +7,7 @@ import App from './App';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-test('renders non-empty component without crashing', () => {
+test('renders app component without error', () => {
   const wrapper = shallow(<App />);
   expect(wrapper.exists()).toBe(true);
 });
