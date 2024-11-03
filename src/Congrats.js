@@ -1,5 +1,5 @@
 const Congrats = () => {
-  return <h1 data-test="congrats-message">Congrats</h1>;
+  return <div></div>;
 };
 
 export default Congrats;
