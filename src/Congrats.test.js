@@ -36,9 +36,9 @@ test('renders non-empty congrats message when `success` prop is true', () => {
 });
 
 test('does not throw warning with expected props', () => {
-  const expectedProps = { success: true };
+  const expectedProps = { success: false };
   const propsError = checkPropTypes(
-    Congrats.PropTypes,
+    Congrats.propTypes,
     expectedProps,
     'prop',
     Congrats.success
