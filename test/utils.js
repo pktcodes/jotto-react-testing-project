@@ -17,10 +17,10 @@ const findByTestAttribute = (wrapper, value) => {
  */
 const validateProps = (component, expectedProps) => {
   const propsError = checkPropTypes(
-    component.PropTypes,
+    component.propTypes,
     expectedProps,
     'prop',
-    'component'
+    component.name
   );
   expect(propsError).toBeUndefined();
 };
