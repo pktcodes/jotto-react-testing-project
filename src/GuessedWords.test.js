@@ -27,3 +27,7 @@ test('renders guessed words component without error', () => {
 test('does not throw warning with expected props', () => {
   validateProps(GuessedWords, defaultProps);
 });
+
+describe('if there are no words guessed', () => {});
+
+describe('if there are words guessed', () => {});
