@@ -46,7 +46,6 @@ describe('if there are words guessed', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = setup({ guessedWords });
-    console.log(wrapper.debug());
   });
 
   test('render "guessed words" section', () => {
@@ -55,7 +54,7 @@ describe('if there are words guessed', () => {
   });
 
   test('check correct number of guessed words', () => {
-    const wrapper = setup(guessedWords);
+    const wrapper = setup({ guessedWords });
     const guessedWordNodes = findByTestAttribute(wrapper, 'guessed-word');
     expect(guessedWordNodes.length).toBe(guessedWords.length);
   });
