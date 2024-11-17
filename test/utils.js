@@ -1,4 +1,4 @@
-import { checkPropTypes } from 'prop-types';
+import checkPropTypes from 'check-prop-types';
 
 /**
  * Return nodes(s) with the given data-test attribute
