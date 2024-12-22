@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { shallow } from 'enzyme';
 
 import { findByTestAttribute, validateProps } from '../test/utils';
@@ -27,4 +29,19 @@ test('renders input component without error', () => {
 test('check the expected props', () => {
   const expectedProps = { ...defaultProps };
   validateProps(Input, expectedProps);
+});
+
+describe('state controlled input field', () => {
+  test('state updates upon change of input field value', () => {
+    const mockSetCurrentGuess = jest.fn();
+    React.useState = jest.fn(() => ['', mockSetCurrentGuess]);
+
+    const wrapper = setup();
+    const inputBox = findByTestAttribute(wrapper, 'input-box');
+
+    const mockEvent = { target: { value: 'train' } };
+    inputBox.simulate('change', mockEvent);
+
+    expect(mockSetCurrentGuess).toHaveBeenCalledWith('train');
+  });
 });
