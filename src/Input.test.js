@@ -5,6 +5,15 @@ import { shallow } from 'enzyme';
 import { findByTestAttribute, validateProps } from '../test/utils';
 import Input from './Input';
 
+// Mock entire module for destructuring useState on import
+/* const mockSetCurrentGuess = jest.fn();
+jest.mock('react', () => {
+  return {
+    ...jest.requireActual('react'),
+    useState: (initialState) => [initialState, mockSetCurrentGuess],
+  };
+}); */
+
 const defaultProps = {
   secretWord: 'party',
 };
