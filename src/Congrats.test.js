@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import { checkPropTypes } from 'prop-types';
+import checkPropTypes from 'check-prop-types';
 
 import Congrats from './Congrats';
 

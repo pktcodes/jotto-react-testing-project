@@ -18,17 +18,17 @@ const setup = (props = {}) => {
   return shallow(<GuessedWords {...setupProps} />);
 };
 
-test('renders component without error', () => {
-  const wrapper = setup();
-  const component = wrapper.find('[data-test="guessed-words-component"]');
-  expect(component.length).toBe(1);
-});
-
 test('does not throw warning with expected props', () => {
   validateProps(GuessedWords, defaultProps);
 });
 
 describe('if there are no words guessed', () => {
+  test('renders component without error', () => {
+    const wrapper = setup();
+    const component = wrapper.find('[data-test="guessed-words-component"]');
+    expect(component.length).toBe(1);
+  });
+
   test('render instructions to guess a word', () => {
     const wrapper = setup({ guessedWords: [] });
     const instructions = findByTestAttribute(wrapper, 'guess-instructions');
@@ -46,6 +46,11 @@ describe('if there are words guessed', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = setup({ guessedWords });
+  });
+
+  test('renders component without error', () => {
+    const component = wrapper.find('[data-test="guessed-words-component"]');
+    expect(component.length).toBe(1);
   });
 
   test('render "guessed words" section', () => {
