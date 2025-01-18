@@ -16,6 +16,7 @@ jest.mock('react', () => {
 
 const defaultProps = {
   secretWord: 'party',
+  success: false,
 };
 
 /**
@@ -29,10 +30,52 @@ const setup = (props = {}) => {
   return shallow(<Input {...setupProps} />);
 };
 
-test('renders input component without error', () => {
-  const wrapper = setup();
-  const inputComponent = findByTestAttribute(wrapper, 'input-component');
-  expect(inputComponent.length).toBe(1);
+describe('render', () => {
+  describe('when success is true', () => {
+    let wrapper;
+
+    beforeEach(() => {
+      wrapper = setup({ success: true });
+    });
+
+    test('input component displays without error', () => {
+      const inputComponent = findByTestAttribute(wrapper, 'input-component');
+      expect(inputComponent.length).toBe(1);
+    });
+
+    test('input box does not display', () => {
+      const inputBox = findByTestAttribute(wrapper, 'input-box');
+      expect(inputBox.exists()).toBe(false);
+    });
+
+    test('submit button does not display', () => {
+      const submitButton = findByTestAttribute(wrapper, 'submit-button');
+      expect(submitButton.exists()).toBe(false);
+    });
+  });
+
+  describe('when success is false', () => {
+    let wrapper;
+
+    beforeEach(() => {
+      wrapper = setup({ success: false });
+    });
+
+    test('display  input component without error', () => {
+      const inputComponent = findByTestAttribute(wrapper, 'input-component');
+      expect(inputComponent.length).toBe(1);
+    });
+
+    test('display input box', () => {
+      const inputBox = findByTestAttribute(wrapper, 'input-box');
+      expect(inputBox.exists()).toBe(true);
+    });
+
+    test('display submit button', () => {
+      const submitButton = findByTestAttribute(wrapper, 'submit-button');
+      expect(submitButton.exists()).toBe(true);
+    });
+  });
 });
 
 test('check the expected props', () => {
